@@ -1,6 +1,3 @@
-FROM osgeo/gdal:ubuntu-small-latest
-## Gdal Tippecanoe
-  1 ## Gdal Tippecanoe
 ## Gdal Tippecanoe
 
 This combines the [ogr2ogr tools](https://github.com/OSGeo/gdal/tree/master/docker) with [Tippecanoe](https://github.com/protomaps/tippecanoe) all in one Docker package, for great Geospatial ETLing.
