@@ -29,7 +29,7 @@ echo "Done!"
 3. Run ogr2ogr and tippecanoe in Docker:
 ```
 docker build -t gdaltippe .
-docker run -v `pwd`:`pwd` -w `pwd` -i -t  gdaltippe --env-file ./postgis.env bash ./examples/download_table.sh
+docker run -v `pwd`:`pwd` -w `pwd` -i -t  gdaltippe --env-file ./examples/postgis.env bash ./examples/download_table.sh
 ```
 
 4. You should now have a file `test_table.mbtiles` in your present working directory.
