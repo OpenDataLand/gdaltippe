@@ -4,7 +4,7 @@ This combines the [ogr2ogr tools](https://github.com/OSGeo/gdal/tree/master/dock
 
 You can use this to extract / convert your geospatial files with ogr2ogr and create an mbtiles file all on once Docker
 
-## Example
+## Docker Example
 
 1. Edit the example env file with your own values: `example/postgis.env`
 
