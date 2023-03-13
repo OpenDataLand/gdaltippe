@@ -1,35 +1,46 @@
-## Gdal Tippecanoe
 
-This combines the [ogr2ogr tools](https://github.com/OSGeo/gdal/tree/master/docker) with [Tippecanoe](https://github.com/protomaps/tippecanoe) all in one Docker package, for great Geospatial ETLing.
+# gdal-tippecanoe
 
-You can use this to extract / convert your geospatial files with ogr2ogr and create an mbtiles file all on once Docker
+This Docker package combines the `ogr2ogr` tools from [GDAL](https://github.com/OSGeo/gdal/tree/master/docker) with the [Felt](https://felt.com/) version of [Tippecanoe](https://github.com/felt/tippecanoe) for geospatial ETLing.
 
-## Docker Example
+Use this package to extract/convert your geospatial files with `ogr2ogr` and create an MBTiles file in a single Docker command.
 
-1. Edit the example env file with your own values: `example/postgis.env`
+## Example
 
-```
+1.  Edit the example environment file (`postgis.env`) with your own values:
+
+```makefile
 PGHOST=postgres
 PGUSER=postgres
 PGPASSWORD=postgres
 PGDATABASE=postgres
 ```
 
-2. Edit the example bash file with your table information: `example/download_table.sh`
-```
-#!/bin/bash
+2.  Edit the example Bash file (`download_table.sh`) with your table information:
 
-ogr2ogr -f FlatGeoBuf example.fgb PG:"" -sql "SELECT name, the_geom FROM test_table" &&\
-tippecanoe -zg -o test_table.mbtiles --drop-densest-as-needed example.fgb && \
+```bash
+ogr2ogr \
+  -f FlatGeoBuf example.fgb \
+  PG:"" -sql "SELECT name, the_geom FROM test_table" && \
+tippecanoe \
+  -zg \
+  -o test_table.mbtiles \
+  --drop-densest-as-needed \
+  example.fgb && \
 rm ./example.fgb
 
 echo "Done!"
-```
+``` 
 
-3. Run ogr2ogr and tippecanoe in Docker:
-```
-docker build -t gdaltippe .
-docker run -v `pwd`:`pwd` -w `pwd` -i -t  gdaltippe --env-file ./example/postgis.env bash ./example/download_table.sh
-```
+3.  Run `ogr2ogr` and `tippecanoe` in Docker:
 
-4. You should now have a file `test_table.mbtiles` in your present working directory.
+```bash
+docker run \
+  -v `pwd`:`pwd` \
+  -w `pwd` -i -t \
+  jimmyrocks:gdaltippe:latest \
+  --env-file ./postgis.env \
+  bash ./download_table.sh
+``` 
+
+4.  You should now have a file named `test_table.mbtiles` in your present working directory.
