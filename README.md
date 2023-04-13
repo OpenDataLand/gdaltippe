@@ -38,7 +38,7 @@ echo "Done!"
 docker run \
   -v `pwd`:`pwd` \
   -w `pwd` -i -t \
-  jimmyrocks:gdaltippe:latest \
+  jimmyrocks/gdaltippe:latest \
   --env-file ./postgis.env \
   bash ./download_table.sh
 ``` 
