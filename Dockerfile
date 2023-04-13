@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
       build-essential \
       g++-11 \
       git \
+      jq \
       libsqlite3-dev \
       sqlite \
       zlib1g-dev \
