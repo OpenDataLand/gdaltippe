@@ -1,4 +1,4 @@
-FROM osgeo/gdal:ubuntu-small-latest
+FROM ghcr.io/osgeo/gdal:ubuntu-small-latest
 
 # Add libraries
 RUN apt-get update && apt-get install -y \
