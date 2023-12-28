@@ -1,3 +1,12 @@
+FROM golang:1.20.8-alpine3.18 AS builder
+
+# Build PMTiles
+RUN apk add --no-cache git && \
+   git clone https://github.com/protomaps/go-pmtiles.git /pmtiles && \
+   cd /pmtiles && \
+   CGO_ENABLED=0 go build -o /pmtiles/go-pmtiles
+
+# Build the final image
 FROM ghcr.io/osgeo/gdal:ubuntu-small-latest
 
 # Add libraries
@@ -17,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 
 ENV CXX=g++-11
 
-# Add Tippecanoe (protomaps version)
+# Add Tippecanoe (felt version)
 RUN git clone https://github.com/felt/tippecanoe.git /tippecanoe && \
     cd tippecanoe && \
     make -j && \
@@ -25,6 +34,10 @@ RUN git clone https://github.com/felt/tippecanoe.git /tippecanoe && \
     cd ../ && \
     rm -rf ./tippecanoe
 
+# Copy the go-pmtiles executable from the builder stage
+COPY --from=builder /pmtiles/go-pmtiles /usr/bin/pmtiles
+
+# Remove unnecessary packages
 RUN apt-get remove -y \
    build-essential \
    g++-11 \
