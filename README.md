@@ -1,7 +1,7 @@
 
 # gdal-tippecanoe
 
-This Docker package combines the `ogr2ogr` tools from [GDAL](https://github.com/OSGeo/gdal/tree/master/docker) with the [Felt](https://felt.com/) version of [Tippecanoe](https://github.com/felt/tippecanoe) for geospatial ETLing.
+This Docker package combines the `ogr2ogr` tools from [GDAL](https://github.com/OSGeo/gdal/tree/master/docker) with the [Felt](https://felt.com/) version of [Tippecanoe](https://github.com/felt/tippecanoe) and the [go-pmtiles](https://github.com/protomaps/go-pmtiles) tool for geospatial ETLing.
 
 Use this package to extract/convert your geospatial files with `ogr2ogr` and create an MBTiles file in a single Docker command.
 
