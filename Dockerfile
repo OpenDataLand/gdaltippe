@@ -34,7 +34,7 @@ RUN mkdir /tippecanoe && \
     rm -rf ./tippecanoe
 
 # Copy the go-pmtiles executable from the pmtiles docker
-COPY --from=pmtiles /workspace/go-pmtiles /usr/bin/pmtiles
+COPY --from=pmtiles /go-pmtiles /usr/bin/pmtiles
 
 # Remove unnecessary packages
 RUN apt-get remove -y \
