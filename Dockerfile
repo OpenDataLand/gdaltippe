@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     git \
     jq \
     libsqlite3-dev \
-    sqlite \
+    sqlite3 \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
