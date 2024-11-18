@@ -42,6 +42,4 @@ RUN apt-get remove -y \
    g++-11 \
    git \
    jq \
-   libsqlite3-dev \
-   zlib1g-dev \
    && apt-get autoremove -y
