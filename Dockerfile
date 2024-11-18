@@ -28,7 +28,7 @@ RUN mkdir /tippecanoe && \
     | jq -r '.tarball_url' \
     | xargs curl -L -o tippecanoe.tar.gz && \
     tar -xzf tippecanoe.tar.gz --strip-components=1 && \
-    make -j && \
+    make -j1 && \
     make install && \
     cd ../ && \
     rm -rf ./tippecanoe
