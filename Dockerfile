@@ -41,5 +41,4 @@ RUN apt-get remove -y \
    build-essential \
    g++-11 \
    git \
-   jq \
    && apt-get autoremove -y
